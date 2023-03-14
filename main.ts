@@ -45,4 +45,4 @@ let Health = 100
 info.setScore(0)
 statusbar = statusbars.create(20, 4, StatusBarKind.Health)
 statusbar.attachToSprite(mySprite)
-statusbar.setColor(15, 10)
+statusbar.setColor(15, 8)
