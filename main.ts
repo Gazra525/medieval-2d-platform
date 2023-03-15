@@ -16,7 +16,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Level2 Flag`, function (sprit
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     statusbar.value += -25
-    mySprite.vy = -100
+    mySprite.vy = -150
     mySprite.vx = -25
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -38,6 +38,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Level1 Flag`, function (sprit
     game.setGameOverEffect(true, effects.hearts)
     game.splash("Level 1 Complete")
     game.splash("Level 2")
+    info.startCountdown(14)
     tiles.setCurrentTilemap(tilemap`level0`)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(2, 6))
 })
