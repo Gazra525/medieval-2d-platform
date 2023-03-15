@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const Coin = SpriteKind.create()
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
 	
 })
@@ -11,10 +14,22 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         mySprite.vy = -100
     }
 })
+function generateCoins () {
+    CoinNum = 10
+    CoinList = []
+    for (let index = 0; index < CoinNum; index++) {
+        CoinList.push(sprites.create(assets.image`Coin`, SpriteKind.Player))
+    }
+    for (let Coin of sprites.allOfKind(SpriteKind.Coin)) {
+        tiles.placeOnTile(Coin, tiles.getTileLocation(1, 2))
+    }
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile8`, function (sprite, location) {
     game.gameOver(true)
     game.setGameOverEffect(true, effects.confetti)
 })
+let CoinList: Sprite[] = []
+let CoinNum = 0
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 scene.setBackgroundColor(10)
@@ -37,7 +52,8 @@ mySprite = sprites.create(img`
     . . . 2 2 2 2 2 2 2 2 2 2 . . . 
     . . . 2 2 2 2 2 2 2 2 2 2 . . . 
     `, SpriteKind.Player)
-mySprite.ay = 200
+let Coin = sprites.create(assets.image`Coin`, SpriteKind.Coin)
+mySprite.ay = 350
 scene.cameraFollowSprite(mySprite)
 tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 6))
 controller.moveSprite(mySprite, 100, 0)
