@@ -5,14 +5,22 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, l
 	
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Level2 Flag`, function (sprite, location) {
-    sprites.destroy(mySprite)
     info.stopCountdown()
     for (let index = 0; index < 1; index++) {
-        info.changeScoreBy(1500)
+        info.changeScoreBy(2000)
     }
     game.setGameOverEffect(true, effects.hearts)
     game.splash("Level 2 Complete")
     game.splash("Level 3")
+    info.startCountdown(22)
+    tiles.setCurrentTilemap(tilemap`level`)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 6))
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`Coin`, function (sprite, location) {
+    for (let index = 0; index < 1; index++) {
+        info.changeScoreBy(50)
+    }
+    tiles.setTileAt(location, assets.tile`transparency16`)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     statusbar.value += -25
@@ -24,11 +32,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         mySprite.vy = -100
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
     for (let index = 0; index < 1; index++) {
         info.changeScoreBy(50)
+        statusbar.value += 25
     }
-    tiles.setTileAt(tiles.getTileLocation(4, 6), assets.tile`transparency16`)
+    tiles.setTileAt(location, assets.tile`transparency16`)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Level1 Flag`, function (sprite, location) {
     info.stopCountdown()
@@ -47,6 +56,7 @@ statusbars.onZero(StatusBarKind.Health, function (status) {
 })
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
+game.setDialogTextColor(10)
 game.splash("Cube Runner")
 game.splash("Level 1 Start")
 info.startCountdown(12)
