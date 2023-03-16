@@ -1,45 +1,7 @@
 namespace SpriteKind {
     export const Coin = SpriteKind.create()
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
-	
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Level2 Flag`, function (sprite, location) {
-    info.stopCountdown()
-    for (let index = 0; index < 1; index++) {
-        info.changeScoreBy(2000)
-    }
-    game.setGameOverEffect(true, effects.hearts)
-    game.splash("Level 2 Complete")
-    game.splash("Level 3")
-    info.startCountdown(22)
-    tiles.setCurrentTilemap(tilemap`level`)
-    tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 6))
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Coin`, function (sprite, location) {
-    for (let index = 0; index < 1; index++) {
-        info.changeScoreBy(50)
-    }
-    tiles.setTileAt(location, assets.tile`transparency16`)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    statusbar.value += -25
-    mySprite.vy = -150
-    mySprite.vx = -25
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
-        mySprite.vy = -100
-    }
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    for (let index = 0; index < 1; index++) {
-        info.changeScoreBy(50)
-        statusbar.value += 25
-    }
-    tiles.setTileAt(location, assets.tile`transparency16`)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Level1 Flag`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, img`Level1 Flag`, function (sprite, location) {
     info.stopCountdown()
     for (let index = 0; index < 1; index++) {
         info.changeScoreBy(1000)
@@ -48,11 +10,49 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Level1 Flag`, function (sprit
     game.splash("Level 1 Complete")
     game.splash("Level 2")
     info.startCountdown(14)
-    tiles.setCurrentTilemap(tilemap`level0`)
+    tiles.setCurrentTilemap(tilemap`level4`)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(2, 6))
+})
+scene.onOverlapTile(SpriteKind.Player, img`myTile1`, function (sprite, location) {
+	
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
+        mySprite.vy = -100
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, img`Level2 Flag`, function (sprite, location) {
+    info.stopCountdown()
+    for (let index = 0; index < 1; index++) {
+        info.changeScoreBy(2000)
+    }
+    game.setGameOverEffect(true, effects.hearts)
+    game.splash("Level 2 Complete")
+    game.splash("Level 3")
+    info.startCountdown(22)
+    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 6))
+})
+scene.onOverlapTile(SpriteKind.Player, img`myTile`, function (sprite, location) {
+    statusbar.value += -25
+    mySprite.vy = -150
+    mySprite.vx = -25
 })
 statusbars.onZero(StatusBarKind.Health, function (status) {
     game.gameOver(false)
+})
+scene.onOverlapTile(SpriteKind.Player, img`Coin`, function (sprite, location) {
+    for (let index = 0; index < 1; index++) {
+        info.changeScoreBy(50)
+    }
+    tiles.setTileAt(location, assets.tile`transparency16`)
+})
+scene.onOverlapTile(SpriteKind.Player, img`myTile7`, function (sprite, location) {
+    for (let index = 0; index < 1; index++) {
+        info.changeScoreBy(50)
+        statusbar.value += 25
+    }
+    tiles.setTileAt(location, assets.tile`transparency16`)
 })
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
