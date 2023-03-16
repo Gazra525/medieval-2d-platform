@@ -2,7 +2,8 @@ namespace SpriteKind {
     export const Coin = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
-	
+    mySprite.fx = 1500
+    mySprite.fy = 1500
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Level2 Flag`, function (sprite, location) {
     info.stopCountdown()
@@ -51,8 +52,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Level1 Flag`, function (sprit
     tiles.setCurrentTilemap(tilemap`level0`)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(2, 6))
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`Level3 Flag`, function (sprite, location) {
+    info.stopCountdown()
+    for (let index = 0; index < 1; index++) {
+        info.changeScoreBy(2000)
+    }
+    game.setGameOverEffect(false, effects.hearts)
+    game.splash("Level 3 Complete")
+})
 statusbars.onZero(StatusBarKind.Health, function (status) {
-    game.gameOver(false)
+    game.gameOver(true)
 })
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
