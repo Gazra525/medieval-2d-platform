@@ -24,8 +24,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Coin`, function (sprite, loca
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     statusbar.value += -25
-    mySprite.vy = -50
-    mySprite.vx = -25
+    mySprite.vy = -90
+    mySprite.vx = 0
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
@@ -73,20 +73,20 @@ tiles.setCurrentTilemap(tilemap`level1`)
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
+    . a a a a a a a a a a a a a a . 
+    . a 4 4 4 4 4 4 4 4 4 4 4 4 a . 
+    . a 4 4 4 4 4 4 4 4 4 4 4 4 a . 
+    . a 4 4 4 4 4 a 4 4 4 a 4 4 a . 
+    . a 4 4 4 4 a 3 a 4 a 3 a 4 a . 
+    . a 4 4 4 4 a b a 4 a b a 4 a . 
+    . a 4 4 4 4 4 a 4 4 4 a 4 4 a . 
+    . a 4 4 4 4 4 4 4 4 4 4 4 4 a . 
+    . a 4 4 4 4 4 4 4 4 4 4 4 4 a . 
+    . a 4 4 4 4 4 4 4 4 4 4 4 4 a . 
+    . a 4 4 4 4 4 4 4 4 4 4 4 4 a . 
+    . a 4 4 4 4 4 4 4 4 4 4 4 4 a . 
+    . a 4 4 4 4 4 4 4 4 4 4 4 4 a . 
+    . a a a a a a a a a a a a a a . 
     `, SpriteKind.Player)
 mySprite.ay = 185
 scene.cameraFollowSprite(mySprite)
