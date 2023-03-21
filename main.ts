@@ -17,12 +17,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Level2 Flag`, function (sprit
     tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 6))
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Coin`, function (sprite, location) {
+    music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.UntilDone)
     for (let index = 0; index < 1; index++) {
         info.changeScoreBy(50)
     }
     tiles.setTileAt(location, assets.tile`transparency16`)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    music.play(music.melodyPlayable(music.powerDown), music.PlaybackMode.UntilDone)
     statusbar.value += -25
     mySprite.vy = -90
     mySprite.vx = 0
@@ -33,6 +35,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
+    music.play(music.melodyPlayable(music.powerUp), music.PlaybackMode.UntilDone)
     for (let index = 0; index < 1; index++) {
         info.changeScoreBy(50)
         statusbar.value += 25
